@@ -1,0 +1,27 @@
+version: "2"
+services:
+  app:
+    build: ../docker/grails
+    image: grails:2.4.5
+    volumes:
+      - ${PWD}:/webserver:rw
+      - ${HOME}/.m2:/root/.m2
+      - ${HOME}/.grails/:/root/.grails/
+      - ${HOME}/logs/:/root/logs/:rw
+    working_dir: /webserver
+    ports:
+        - "8080:8080"
+    command: bash -c "grails clean && grails test-app :spock"
+    container_name: webserver
+
+  redisdesa:
+    image: redis:3.2.9
+    ports:
+      - "6379:6379"
+    container_name: redisdesa
+
+  memcached-desa:
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+    container_name: memcached-desa

@@ -1,0 +1,9 @@
+# Make sure apps get installed in system Applications dir
+cask_args appdir: '/Applications'
+
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+brew 'nvm'
+brew 'wget'
+cask 'docker'
