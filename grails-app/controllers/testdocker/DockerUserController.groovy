@@ -11,6 +11,7 @@ class DockerUserController {
 	def register(){
 		Map requestBody = request.JSON
 		Map apiResponse = getUser(requestBody.get("mercadolibreId"))
+		println "apiResponse: ${apiResponse}"
 		if(apiResponse.status == 404){
 			renderNotFoundResponse("user is not a user of mercadolibre")
 		}
@@ -19,7 +20,9 @@ class DockerUserController {
 				renderBadRequestResponse()
 			}
 			else{
+				println "before registerDockerUser"
 				Map userInfo = registerDockerUser(requestBody)
+				println "userRegistered: ${userInfo}"
 				storeInCache(userInfo)
 				renderOkResponse(200, userInfo)
 			}
