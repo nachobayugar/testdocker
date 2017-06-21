@@ -29,9 +29,9 @@ services:
     build: ./node
     image: node:0.12.4
     volumes:
-      - test/mocks:/mocks:rw
+      - ../../mockserver:/mocks:rw
     working_dir: /mocks
-    command: node server/mock.js ulimit -n 100000
+    command: node index.js ulimit -n 100000
     ports:
       - "8888:8888"
     ulimits:
