@@ -94,6 +94,15 @@ environments {
 		redisPort = 6379
         grails.logging.jul.usebridge = true
     }
+	test {
+		//baseUrl = "https://api.mercadolibre.com"
+		baseUrl = "http://localhost:8888"
+		memcachedServer = "localhost"
+		memcachedPort = "11211"
+		redisHost = "localhost"
+		redisPort = 6379
+		grails.logging.jul.usebridge = true
+	}
     production {
 		baseUrl = "https://api.mercadolibre.com"
 		memcachedServer = "memcached-desa"
