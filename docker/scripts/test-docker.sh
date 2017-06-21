@@ -8,7 +8,6 @@ source docker/scripts/appsUtils.sh
 
 grailsPath=$PWD
 
-
 ##===>CHEQUEOS
 
 ##Iniciamos los chequeos previos a la ejecución
