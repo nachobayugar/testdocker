@@ -88,17 +88,17 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
 		baseUrl = "https://api.mercadolibre.com"
-		memcachedServer = "localhost"
+		memcachedServer = "memcached-desa"
 		memcachedPort = "11211"
-		redisHost = "localhost"
+		redisHost = "redisdesa"
 		redisPort = 6379
         grails.logging.jul.usebridge = true
     }
     production {
 		baseUrl = "https://api.mercadolibre.com"
-		memcachedServer = "localhost"
+		memcachedServer = "memcached-desa"
 		memcachedPort = "11211"
-		redisHost = "localhost"
+		redisHost = "redisdesa"
 		redisPort = "6379"
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"

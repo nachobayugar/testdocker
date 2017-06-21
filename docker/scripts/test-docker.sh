@@ -25,3 +25,13 @@ e_header "STEP 2 - Running Docker Compose"
 docker_logo
 ####Docker Compose Startup
 dockerComposeUp
+
+e_header "STEP 3 - Showing application logs"
+
+docker logs --follow webserver
+
+e_header "STEP 4 - Stopping docker & containers"
+
+cd ../docker/
+
+docker-compose stop
