@@ -5,9 +5,9 @@ source docker/scripts/dockerUtils.sh
 source docker/scripts/environment.sh
 source docker/scripts/jdkUtils.sh
 source docker/scripts/appsUtils.sh
+source docker/scripts/mocksUtils.sh
 
 grailsPath=$PWD
-
 
 ##===>CHEQUEOS
 
@@ -21,7 +21,21 @@ runSetupChecks $APPS
 
 checkApplicationStatus "Docker"
 
+getMocksServerHome
+
+export MOCKS_HOME=$MOCKS_HOME
+
 e_header "STEP 2 - Running Docker Compose"
 docker_logo
 ####Docker Compose Startup
 dockerComposeUp
+
+e_header "STEP 3 - Showing application logs"
+
+docker logs --follow webserver
+
+e_header "STEP 4 - Stopping docker & containers"
+
+cd ../docker/
+
+docker-compose stop

@@ -1,13 +1,12 @@
 version: "2"
 services:
   app:
-    build: ../docker/grails
+    build: ./grails
     image: grails:2.4.5
     volumes:
       - ${PWD}:/webserver:rw
       - ${HOME}/.m2:/root/.m2
       - ${HOME}/.grails/:/root/.grails/
-      - ${HOME}/logs/:/root/logs/:rw
     working_dir: /webserver
     ports:
         - "8080:8080"
@@ -25,3 +24,17 @@ services:
     ports:
       - "11211:11211"
     container_name: memcached-desa
+
+  mocks:
+    image: mhart/alpine-node:0.12.4
+    volumes:
+      - ${MOCKS_HOME}:/mocks:rw
+    working_dir: /mocks
+    command: node index.js
+    ports:
+      - "8888:8888"
+    ulimits:
+      nofile:
+        soft: 10000
+        hard: 10000
+    container_name: mocks

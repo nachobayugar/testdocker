@@ -13,26 +13,20 @@ function installHomebrew() {
   which -s brew
   if [[ $? != 0 ]] ; then
       # Install Homebrew
+      e_note "Installing Brew"
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      e_note "Installing Brew Bundle"
-      brew tap Homebrew/bundle
   else
       e_success "Brew installed"
-      e_note "Updating brew"
-      #brew update
-      brew_version='brew --version'      
+      BREW_VERSION=$(brew --version)
+      e_success "Brew version: $BREW_VERSION"
   fi
 }
 
 
 function buildBrewBundle() {
   e_note "Building Brew Bundle"
-  brew bundle > /dev/null
+  brew bundle
 }
-
-#function get_application_version() {
-  ##statements
-#}
 
 function checkBrewBundle() {
     cd docker/scripts/
@@ -67,10 +61,7 @@ function installBrewCaskApplication() {
   echo "------------------------------------------------"
 
   brew cask install $1
-  #brew
-  #brew list | grep 'package-name'
 }
-
 
 function install_cask() {
   brew tap caskroom/cask
@@ -93,7 +84,6 @@ function checkSdkman() {
   fi
 
 }
-
 
 function checkGrailsVersion() {
 
@@ -236,6 +226,7 @@ function openApplication() {
   #@Response: pid(Process ID)
   APPLICATION="$1"
   open /Applications/$1.app > /dev/null > /dev/null
+  sleep 10
   checkApplicationStatus $APP
 }
 
