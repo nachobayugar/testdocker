@@ -26,12 +26,11 @@ services:
     container_name: memcached-desa
 
   mocks:
-    build: ./node
-    image: node:0.12.4
+    image: mhart/alpine-node:0.12.4
     volumes:
-      - ../../mockserver:/mocks:rw
+      - ${MOCKS_HOME}:/mocks:rw
     working_dir: /mocks
-    command: node index.js ulimit -n 100000
+    command: node index.js
     ports:
       - "8888:8888"
     ulimits:

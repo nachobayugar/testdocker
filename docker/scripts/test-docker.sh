@@ -5,6 +5,7 @@ source docker/scripts/dockerUtils.sh
 source docker/scripts/environment.sh
 source docker/scripts/jdkUtils.sh
 source docker/scripts/appsUtils.sh
+source docker/scripts/mocksUtils.sh
 
 grailsPath=$PWD
 
@@ -19,6 +20,10 @@ APPS=( "brew" "brew-bundle")
 runSetupChecks $APPS
 
 checkApplicationStatus "Docker"
+
+getMocksServerHome
+
+export MOCKS_HOME=$MOCKS_HOME
 
 e_header "STEP 2 - Running Docker Compose"
 docker_logo

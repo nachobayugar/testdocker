@@ -74,8 +74,6 @@ function docker_logo() {
     cd $grailsPath
   CURRENT=$(pwd)
   BASENAME=$(basename "$CURRENT")
-  echo "CURRENT: $CURRENT"
-  echo "BASENAME: $BASENAME"
 
   case $BASENAME in
       testdocker)
