@@ -28,6 +28,9 @@ class DockerUserFucntionalSpec extends Specification{
 		then:
 			println "-----------------------------------------------------"
 			println respJson.body
+			respJson.status == 200
+			respJson.body.email == requestBody.get("email")
+			respJson.body.name == requestBody.get("name")
 			
 	}
 
