@@ -17,8 +17,8 @@ function installHomebrew() {
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   else
       e_success "Brew installed"
-      brew_version='brew --version'
-      e_success "Brew version: $brew_version"
+      BREW_VERSION=$(brew --version)
+      e_success "Brew version: $BREW_VERSION"
   fi
 }
 
